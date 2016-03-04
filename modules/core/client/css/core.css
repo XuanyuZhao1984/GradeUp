@@ -35,3 +35,131 @@ a:hover .header-profile-image {
 .has-error .help-inline.error-text {
   display: inline;
 }
+
+
+
+.h2art {
+  color: #e84940;
+  font-size: 50px;
+  font-family: Cookie,cursive;
+  text-shadow:
+          1px 1px 0 #CCC,
+          2px 2px 0 #CCC, /* end of 2 level deep grey shadow */
+          3px 3px 0 #444,
+          4px 4px 0 #444,
+          5px 5px 0 #444,
+          6px 6px 0 #444; /* end of 4 level deep dark shadow */
+}
+
+
+body {
+  background-color: #e8e8e8;
+}
+
+img {
+  max-width: 100%;
+  /*height: auto;*/
+}
+
+.imagedesc{
+
+  font-weight: bold;
+  text-align: center;
+  color: #4d2926;
+
+
+}
+
+.roundimg{
+  border-radius: 28px;
+}
+
+
+/*div.div1{*/
+
+  /*width: 300px;*/
+  /*margin: 0 auto;*/
+  /*!*-webkit-transition:  -webkit-transform 0.2s; !* Safari *!*!*/
+  /*!*transition:  transform 0.2s;*!*/
+
+/*}*/
+
+/*div.div1:hover {*/
+  /*-ms-transform: translate(0,-10px); !* IE 9 *!*/
+  /*-webkit-transform: translate(0,-10px); !* Safari *!*/
+  /*transform: translate(0,-10px);*/
+/*}*/
+
+/* Bob */
+@-webkit-keyframes hvr-bob {
+  0% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+
+  50% {
+    -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
+  }
+
+  100% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes hvr-bob {
+  0% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+
+  50% {
+    -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
+  }
+
+  100% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+@-webkit-keyframes hvr-bob-float {
+  100% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes hvr-bob-float {
+  100% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+
+
+.hvr-bob:hover, .hvr-bob:focus, .hvr-bob:active {
+  -webkit-animation-name: hvr-bob-float, hvr-bob;
+  animation-name: hvr-bob-float, hvr-bob;
+  -webkit-animation-duration: .3s, 1.5s;
+  animation-duration: .3s, 1.5s;
+  -webkit-animation-delay: 0s, .3s;
+  animation-delay: 0s, .3s;
+  -webkit-animation-timing-function: ease-out, ease-in-out;
+  animation-timing-function: ease-out, ease-in-out;
+  -webkit-animation-iteration-count: 1, infinite;
+  animation-iteration-count: 1, infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-direction: normal, alternate;
+  animation-direction: normal, alternate;
+}
+
+
+#refreshsign {
+
+  font-size: 200px;
+  color: #df1ee8;
+}
+
