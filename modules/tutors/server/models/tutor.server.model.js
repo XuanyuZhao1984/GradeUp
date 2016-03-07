@@ -14,13 +14,13 @@ var TutorSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  title: {
+  name: {
     type: String,
     default: '',
     trim: true,
-    required: 'Title cannot be blank'
+    required: 'name cannot be blank'
   },
-  content: {
+  language: {
     type: String,
     default: '',
     trim: true
@@ -28,7 +28,44 @@ var TutorSchema = new Schema({
   user: {
     type: Schema.ObjectId,
     ref: 'User'
-  }
+  },
+  subject: {
+    type: String,
+    default: '',
+    trim: true,
+    required:true
+  },
+  hourly_rate: {
+    type: Number,
+    default: '',
+    //trim: true,
+    min:10,
+    max:300
+  },
+  gender: { type: String, required: true },
+  longitude: { type: Number, required: true },
+  latitude: { type: Number, required: true },
+  // [Long, Lat]
+  updated_at: { type: Date, default: Date.now },
+  address: {
+    type: String,
+    default: '',
+    trim: true,
+    required:true
+  },
+  city: {
+    type: String,
+    default: '',
+    trim: true,
+    required:true
+  },
+  available_days:{
+    type:[String],
+    required:true
+
+  },
+
+  description: { type: String, required: true }
 });
 
 mongoose.model('Tutor', TutorSchema);

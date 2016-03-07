@@ -1,28 +1,192 @@
 <section>
-  <div class="page-header">
-    <h1>{{vm.tutor._id ? 'Edit Tutor' : 'New Tutor'}}</h1>
+
+  <!-- Map and Side Panel -->
+  <div class="row ">
+    <!-- Google Map -->
+    <div class="col-sm-7" >
+      <div style="position: fixed" id="map"><img src="holder.js/645x645"></div>
+    </div>
+
+    <!-- Side Panel -->
+    <div class="col-sm-5">
+
+      <!-- Creates Main Panel -->
+      <div class="panel panel-default">
+
+        <!-- Panel Title -->
+        <div class="panel-heading">
+          <h2 class="panel-title text-center">Join the Tutor family! <span class="glyphicon glyphicon-map-marker"></span></h2>
+        </div>
+
+        <!-- Panel Body -->
+        <div class="panel-body">
+
+          <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
+          <form name="vm.form.tutorForm"  ng-submit="vm.save(vm.form.tutorForm.$valid)" novalidate>
+
+            <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
+            <div class="row ">
+              <div class="col-xs-6">
+
+                <div class="form-group" show-errors>
+                  <label class="control-label" for="name">Name<span class="badge">All fields required</span></label>
+                  <input name="name" type="text" ng-model="vm.tutor.name" id="name" class="form-control"
+                         placeholder="e.g. Jim Smith" required>
+                  <div ng-messages="vm.form.tutorForm.name.$error" role="alert">
+                    <p class="help-block error-text" ng-message="required">Tutor name is required.</p>
+                  </div>
+                </div>
+
+                <label class="radio control-label">Gender</label>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="radiomale" value="Male" ng-model="vm.tutor.gender">
+                    Male
+                  </label>
+                </div>
+                <div class="radio" required>
+                  <label>
+                    <input type="radio" name="optionsRadios" id="radiofemale" value="Female" ng-model="vm.tutor.gender">
+                    Female
+                  </label>
+                </div>
+
+
+              </div>
+              <!--uploading photo area-->
+              <div class="col-xs-6 " align="center">
+                <img src="/modules/tutors/client/img/user-icon-6.png"  >
+
+                <!--<button type="button" class="btn btn-info" style="margin-top: 5px">Upload your photo</button>-->
+              </div>
+            </div>
+
+
+
+            <div class="row ">
+              <div class="col-xs-6">
+                <div class="form-group" show-errors>
+                  <label class="control-label" for="age">Age</label>
+                  <input name="age" type="number" ng-model="vm.tutor.age" id="age" class="form-control"
+                         placeholder="30" required>
+                  <div ng-messages="vm.form.tutorForm.age.$error" role="alert">
+                    <p class="help-block error-text" ng-message="required">Age is required.</p>
+                  </div>
+                </div>
+              </div>
+                <!--Upload photo button-->
+              <div class="col-xs-6 " align="center">
+
+
+                <button type="button" class="btn btn-info" style="margin-top: 25px">Upload Your Photo</button>
+
+              </div>
+            </div>
+
+
+
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="language">Language</label>
+              <input name="language" type="text" ng-model="vm.tutor.language" id="language" class="form-control"
+                     placeholder="English" required>
+              <div ng-messages="vm.form.tutorForm.language.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Language is required.</p>
+              </div>
+            </div>
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="subject">Subject</label>
+              <input title="Can input 1 or more subjects" name="subject" type="text" ng-model="vm.tutor.subject" id="subject" class="form-control"
+                     placeholder="e.g. Math. " required>
+              <div ng-messages="vm.form.tutorForm.subject.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">subject is required.</p>
+              </div>
+            </div>
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="hourly_rate">Hourly Rate</label>
+
+              <i class="glyphicon glyphicon-usd " style="color: gold"></i>
+              <i class="glyphicon glyphicon-usd " style="color: gold"></i>
+              <input class="form-control" name="hourly_rate" type="number" ng-model="vm.tutor.hourly_rate" id="hourly_rate"
+                     placeholder="60" required>
+
+              <div ng-messages="vm.form.tutorForm.hourly_rate.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">hourly rate is required.</p>
+              </div>
+            </div>
+
+              <!--Lat and Longitude read only since they are derived from google map data-->
+            <div class="form-group">
+              <label for="latitude">Latitude</label>
+              <input type="text" class="form-control" id="latitude"  ng-model="vm.tutor.latitude" readonly>
+            </div>
+            <div class="form-group">
+              <label for="longitude">Longitude</label>
+              <input type="text" class="form-control" id="longitude"  ng-model="vm.tutor.longitude" readonly>
+            </div>
+            <div class="form-group" show-errors>
+              <label class="control-label" for="city">City</label>
+              <input  name="city" type="text" ng-model="vm.tutor.city" id="city" class="form-control"
+                     placeholder="Sydney " required>
+              <div ng-messages="vm.form.tutorForm.city.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">City is required.</p>
+              </div>
+            </div>
+            <div class="form-group" show-errors>
+              <label class="control-label" for="address">Address</label>
+              <input  name="address" type="text" ng-model="vm.tutor.address" id="address" class="form-control"
+                      placeholder=" " required>
+              <div ng-messages="vm.form.tutorForm.address.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Address is required.</p>
+              </div>
+            </div>
+
+            <!--multiselect available days-->
+            <div class="form-group" show-errors>
+              <label class="control-label" >Available Time</label>
+              <div
+                isteven-multi-select
+                input-model="vm.weekdays"
+                output-model="vm.output"
+                button-label="name"
+                item-label="name"
+                tick-property="ticked" helper-elements="all none"
+              >
+              </div>
+            </div>
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="description">Description</label>
+              <textarea  name="description"  ng-model="vm.tutor.description" id="description" class="form-control"
+                      placeholder="Self description" cols="30" rows="10" required></textarea>
+              <div ng-messages="vm.form.tutorForm.description.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Description is required.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-danger btn-block">Submit</button>
+            </div>
+            <div ng-show="vm.error" class="text-danger">
+              <strong ng-bind="vm.error"></strong>
+            </div>
+            <!-- Submit button. Note that its tied to createUser() function from addCtrl. Also note ng-disabled logic which prevents early submits.  -->
+            <!--<button type="submit" class="btn btn-danger btn-block" ng-click="createUser()" ng-disabled="addForm.$invalid">Submit</button>-->
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-md-12">
-    <form name="vm.form.tutorForm" class="form-horizontal" ng-submit="vm.save(vm.form.tutorForm.$valid)" novalidate>
-      <fieldset>
-        <div class="form-group" show-errors>
-          <label class="control-label" for="title">Title</label>
-          <input name="title" type="text" ng-model="vm.tutor.title" id="title" class="form-control" placeholder="Title" required>
-          <div ng-messages="vm.form.tutorForm.title.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Tutor title is required.</p>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label" for="content">Content</label>
-          <textarea name="content" data-ng-model="vm.tutor.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-default">{{vm.tutor._id ? 'Update' : 'Create'}}</button>
-        </div>
-        <div ng-show="vm.error" class="text-danger">
-          <strong ng-bind="vm.error"></strong>
-        </div>
-      </fieldset>
-    </form>
-  </div>
+
+
+
+
+
+
+
+
+
 </section>

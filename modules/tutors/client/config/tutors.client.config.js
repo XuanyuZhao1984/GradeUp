@@ -11,13 +11,13 @@
     Menus.addMenuItem('topbar', {
       title: 'Find a tutor',
       state: 'tutors.list',
-
+      position:1,
       roles: ['*']
     });
     Menus.addMenuItem('topbar', {
       title: 'Register a tutor',
       state: 'tutors.create',
-
+      position:2,
       roles: ['user']
     });
 

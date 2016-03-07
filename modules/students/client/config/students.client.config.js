@@ -9,15 +9,15 @@
 
   function menuConfig(Menus) {
     Menus.addMenuItem('topbar', {
-      title: 'Find a tutor',
+      title: 'Find a student',
       state: 'students.list',
-
+      position:3,
       roles: ['*']
     });
     Menus.addMenuItem('topbar', {
-      title: 'Register a tutor',
+      title: 'Register a student',
       state: 'students.create',
-
+      position:4,
       roles: ['user']
     });
 
