@@ -29,6 +29,10 @@ var TutorSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User'
   },
+  imageURL: {
+    type: String,
+    default: 'modules/tutors/client/img/user-icon-6.png'
+  },
   subject: {
     type: String,
     default: '',
@@ -41,6 +45,12 @@ var TutorSchema = new Schema({
     //trim: true,
     min:10,
     max:300
+  },
+  age: {
+    type: Number,
+    default: ''
+    //trim: true,
+
   },
   gender: { type: String, required: true },
   longitude: { type: Number, required: true },

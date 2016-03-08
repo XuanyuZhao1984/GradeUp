@@ -6,6 +6,10 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Tutor = mongoose.model('Tutor'),
+  multer = require('multer'),
+  fs = require('fs'),
+  path = require('path'),
+  config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
@@ -114,4 +118,46 @@ exports.tutorByID = function (req, res, next, id) {
     req.tutor = tutor;
     next();
   });
+};
+
+exports.changeProfilePicture = function (req, res) {
+  var tutor = req.tutor;
+  //tutor.user = req.user;
+  var upload = multer(config.uploads.tutorUpload).single('newTutorPicture');
+  var profileUploadFileFilter = require(path.resolve('./config/lib/multer')).profileUploadFileFilter;
+
+  // Filtering to upload only images
+  upload.fileFilter = profileUploadFileFilter;
+
+  if (tutor.user) {
+    upload(req, res, function (uploadError) {
+      if(uploadError) {
+        return res.status(400).send({
+          message: 'Error occurred while uploading profile picture'
+        });
+      } else {
+        tutor.imageURL = config.uploads.tutorUpload.dest + req.file.filename;
+        //this is a mongoose / mongod save method.
+        tutor.save(function (saveError) {
+          if (saveError) {
+            return res.status(400).send({
+              message: errorHandler.getErrorMessage(saveError)
+            });
+          } else {
+            req.login(tutor, function (err) {
+              if (err) {
+                res.status(400).send(err);
+              } else {
+                res.json(tutor);
+              }
+            });
+          }
+        });
+      }
+    });
+  } else {
+    res.status(400).send({
+      message: 'User is not signed in'
+    });
+  }
 };

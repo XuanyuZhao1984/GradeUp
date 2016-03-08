@@ -1,7 +1,8 @@
 <section>
   <div class="page-header">
-    <h1 ng-bind="vm.tutor.title"></h1>
+    <h1 ng-bind="vm.tutor.name"></h1>
   </div>
+  <img ng-src="vm.tutor.imageURL">
   <div class="pull-right" ng-show="vm.tutor.isCurrentUserOwner">
     <a class="btn btn-primary" ui-sref="tutors.edit({ tutorId: vm.tutor._id })">
       <i class="glyphicon glyphicon-edit"></i>

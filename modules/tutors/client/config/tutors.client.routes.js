@@ -49,6 +49,19 @@
           pageTitle: 'Edit Tutor {{ tutorResolve.title }}'
         }
       })
+      .state('tutors.uploadphoto', {
+        url: '/:tutorId/upload',
+        templateUrl: 'modules/tutors/client/views/upload-tutor.client.view.html',
+        controller: 'TutorsController',
+        controllerAs: 'vm',
+        resolve: {
+          tutorResolve: getTutor
+        },
+        data: {
+          roles: ['user', 'admin'],
+          pageTitle: 'Upload tutor photo {{ tutorResolve.title }}'
+        }
+      })
       .state('tutors.view', {
         url: '/:tutorId',
         templateUrl: 'modules/tutors/client/views/view-tutor.client.view.html',

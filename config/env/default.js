@@ -49,6 +49,12 @@ module.exports = {
       limits: {
         fileSize: 1*1024*1024 // Max file size in bytes (1 MB)
       }
+    },
+    tutorUpload: {
+      dest: './modules/tutors/client/img/profile/uploads/', // Profile upload destination path
+      limits: {
+        fileSize: 2*1024*1024 // Max file size in bytes (2 MB)
+      }
     }
   }
 };

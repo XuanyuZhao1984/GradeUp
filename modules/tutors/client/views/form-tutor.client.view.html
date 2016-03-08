@@ -22,7 +22,7 @@
         <div class="panel-body">
 
           <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
-          <form name="vm.form.tutorForm"  ng-submit="vm.save(vm.form.tutorForm.$valid)" novalidate>
+          <form name="vm.form.tutorForm"   novalidate>
 
             <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
             <div class="row ">
@@ -55,7 +55,7 @@
               </div>
               <!--uploading photo area-->
               <div class="col-xs-6 " align="center">
-                <img src="/modules/tutors/client/img/user-icon-6.png"  >
+                <img ng-src="{{vm.imageURL}}" alt="{{vm.tutor.name}}" class="img-thumbnail "  >
 
                 <!--<button type="button" class="btn btn-info" style="margin-top: 5px">Upload your photo</button>-->
               </div>
@@ -78,7 +78,10 @@
               <div class="col-xs-6 " align="center">
 
 
-                <button type="button" class="btn btn-info" style="margin-top: 25px">Upload Your Photo</button>
+                <button type="button" class="btn btn-info " style="margin-top: 25px">Upload Your Photo Later
+                  </button>
+                <!--<button type="button" class="btn btn-info btn-file" style="margin-top: 25px">Choose Your Photo-->
+                  <!--<input type="file" nv-file-select uploader="vm.uploader"></button>-->
 
               </div>
             </div>
@@ -145,7 +148,7 @@
             </div>
 
             <!--multiselect available days-->
-            <div class="form-group" show-errors>
+            <div class="form-group" >
               <label class="control-label" >Available Time</label>
               <div
                 isteven-multi-select
@@ -168,13 +171,15 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-danger btn-block">Submit</button>
+              <button type="submit" class="btn btn-danger btn-block"
+                      ng-click="vm.save(vm.form.tutorForm.$valid);">Submit</button>
+              <!--<button type="submit" class="btn btn-danger btn-block"-->
+                      <!--ng-click="vm.uploadProfilePicture();">Submit pic</button>-->
             </div>
             <div ng-show="vm.error" class="text-danger">
               <strong ng-bind="vm.error"></strong>
             </div>
-            <!-- Submit button. Note that its tied to createUser() function from addCtrl. Also note ng-disabled logic which prevents early submits.  -->
-            <!--<button type="submit" class="btn btn-danger btn-block" ng-click="createUser()" ng-disabled="addForm.$invalid">Submit</button>-->
+
           </form>
         </div>
       </div>
