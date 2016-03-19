@@ -18,7 +18,7 @@ module.exports = function (app) {
     .put(tutors.update)
     .delete(tutors.delete);
 
-  app.route('/api/tutors/picture').post(tutors.changeProfilePicture);
+  app.route('/api/tutors/picture/:tutorId').post(tutors.changeProfilePicture);
 
 
   // Finish by binding the tutor middleware

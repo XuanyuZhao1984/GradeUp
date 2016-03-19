@@ -144,13 +144,14 @@ exports.changeProfilePicture = function (req, res) {
               message: errorHandler.getErrorMessage(saveError)
             });
           } else {
-            req.login(tutor, function (err) {
-              if (err) {
-                res.status(400).send(err);
-              } else {
-                res.json(tutor);
-              }
-            });
+            //req.login(tutor, function (err) {
+            //  if (err) {
+            //    res.status(400).send(err);
+            //  } else {
+            //    res.json(tutor);
+            //  }
+            //});
+            res.json(tutor);
           }
         });
       }

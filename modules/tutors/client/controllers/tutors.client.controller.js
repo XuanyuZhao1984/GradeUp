@@ -32,7 +32,7 @@
 
     // Create file uploader instance
     vm.uploader = new FileUploader({
-      url: 'api/tutors/picture',
+      url: 'api/tutors/picture/'+vm.tutor._id,
       alias: 'newTutorPicture'
     });
 
