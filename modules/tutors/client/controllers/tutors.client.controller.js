@@ -17,6 +17,7 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.showMsg=false;
 
     //vm.tutor.age=5;
     //initialize the array to [], then push into it.
@@ -47,6 +48,7 @@
 
     // Called after the user selected a new picture file
     vm.uploader.onAfterAddingFile = function (fileItem) {
+      vm.showMsg=false;
       if ($window.FileReader) {
         var fileReader = new FileReader();
         fileReader.readAsDataURL(fileItem._file);
@@ -57,6 +59,7 @@
             //console.log(vm.tutor.imageURL);
           }, 0);
         };
+
       }
     };
 
@@ -64,7 +67,7 @@
     vm.uploader.onSuccessItem = function (fileItem, response, status, headers) {
       // Show success message
       vm.success = true;
-
+      vm.showMsg=true;
       // Populate tutor object
       vm.tutor.imageURL = response.imageURL;
 

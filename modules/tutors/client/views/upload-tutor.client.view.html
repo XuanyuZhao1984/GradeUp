@@ -9,7 +9,7 @@
           <img ng-src="{{vm.imageURL}}" alt="{{vm.tutor.name}}" class="img-thumbnail ">
         </div>
         <div class="text-center form-group" ng-hide="vm.uploader.queue.length">
-          <span class="btn btn-default btn-file">
+          <span class="btn btn-default btn-file btn-lg selectimgbtn">
               Select Image <input type="file" nv-file-select uploader="vm.uploader">
           </span>
         </div>
@@ -17,8 +17,17 @@
           <button class="btn btn-primary" ng-click="vm.uploadProfilePicture();">Upload</button>
           <button class="btn btn-default" ng-click="vm.cancelUpload();">Cancel</button>
         </div>
-        <div ng-show="vm.success" class="text-center text-success">
+        <div ng-show="vm.showMsg" class="text-center text-success">
           <strong>Profile Picture Changed Successfully</strong>
+
+
+        </div>
+
+        <br>
+        <div class="text-center">
+          <button ng-show="vm.success" type="button" class="btn btn-warning btn-lg " ui-sref="tutors.view({tutorId:vm.tutor._id})">
+            View Full Profile
+          </button>
         </div>
         <div ng-show="vm.error" class="text-center text-danger">
           <strong ng-bind="error"></strong>
