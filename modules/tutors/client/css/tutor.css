@@ -2,3 +2,13 @@
     padding-right: 30px;
     padding-left: 30px;
 }
+/* Google Map! */
+.mapArea {
+    height: 665px;
+/*position: absolute;*/
+    /*width: 645px;*/
+}
+/*.mapWrap{*/
+    /*height:650px;*/
+    /*position: fixed;*/
+/*}*/

@@ -37,14 +37,14 @@ var TutorSchema = new Schema({
     type: String,
     default: '',
     trim: true,
-    required:true
+    required: true
   },
   hourly_rate: {
     type: Number,
     default: '',
     //trim: true,
-    min:10,
-    max:300
+    min: 10,
+    max: 300
   },
   age: {
     type: Number,
@@ -53,29 +53,30 @@ var TutorSchema = new Schema({
 
   },
   gender: { type: String, required: true },
-  longitude: { type: Number, required: true },
-  latitude: { type: Number, required: true },
+  location: { type: [Number], required: true } , // [Long, Lat]
   // [Long, Lat]
   updated_at: { type: Date, default: Date.now },
   address: {
     type: String,
     default: '',
     trim: true,
-    required:true
+    required: true
   },
   city: {
     type: String,
     default: '',
     trim: true,
-    required:true
+    required: true
   },
-  available_days:{
-    type:[String],
-    required:true
+  available_days: {
+    type: [String],
+    required: true
 
   },
 
   description: { type: String, required: true }
 });
+
+TutorSchema.index({ location: '2dsphere' });
 
 mongoose.model('Tutor', TutorSchema);

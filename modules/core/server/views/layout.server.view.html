@@ -33,8 +33,12 @@
 
   <!-- Application CSS Files -->
   {% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
-</head>
 
+  <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxj9-vXqcGLYGrck_MOy7uI6wKziRaN4E"></script>
+
+</head>
+<!--<script src="http://maps.google.com/maps/api/js"></script>-->
 <body class="ng-cloak">
   <header ng-include="'/modules/core/client/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-default"></header>
   <section class="content">
@@ -50,7 +54,7 @@
       <img src="/modules/core/client/img/meanicon.png" alt="pic1" width="20" height="20" >
       <a href="https://github.com/XuanyuZhao1984/GradeUp">Github Repo</a></p>
   </div>
-
+  <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxj9-vXqcGLYGrck_MOy7uI6wKziRaN4E"></script>-->
   <!--Embedding The User Object-->
   <script type="text/javascript">
     var user = {{ user | json | safe }};

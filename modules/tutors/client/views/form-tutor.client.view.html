@@ -4,7 +4,14 @@
   <div class="row ">
     <!-- Google Map -->
     <div class="col-sm-7" >
-      <div style="position: fixed" id="map"><img src="holder.js/645x645"></div>
+      <!--<div style="position: fixed" id="map"><img src="holder.js/645x645"></div>-->
+      <br>
+      <div   map-lazy-load="https://maps.google.com/maps/api/js"
+           map-lazy-load-params="{{vm.googleMapsUrl}}">
+        <ng-map class="mapArea" center="{{vm.tutor.location[1]}},{{vm.tutor.location[0]}}" zoom="3">
+          <marker position="[{{vm.tutor.location[1]}},{{vm.tutor.location[0]}}]"></marker>
+        </ng-map>
+      </div>
     </div>
 
     <!-- Side Panel -->
@@ -124,11 +131,11 @@
               <!--Lat and Longitude read only since they are derived from google map data-->
             <div class="form-group">
               <label for="latitude">Latitude</label>
-              <input type="text" class="form-control" id="latitude"  ng-model="vm.tutor.latitude" readonly>
+              <input type="text" class="form-control" id="latitude"  ng-model="vm.tutor.location[1]" readonly>
             </div>
             <div class="form-group">
               <label for="longitude">Longitude</label>
-              <input type="text" class="form-control" id="longitude"  ng-model="vm.tutor.longitude" readonly>
+              <input type="text" class="form-control" id="longitude"  ng-model="vm.tutor.location[0]" readonly>
             </div>
             <div class="form-group" show-errors>
               <label class="control-label" for="city">City</label>
