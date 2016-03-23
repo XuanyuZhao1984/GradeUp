@@ -9,7 +9,7 @@ module.exports = {
         'public/lib/isteven-multi-select.css'
       ],
       js: [
-        //'https://maps.googleapis.com/maps/api/js',
+        'https://maps.googleapis.com/maps/api/js?key=AIzaSyCxj9-vXqcGLYGrck_MOy7uI6wKziRaN4E',
 
         'public/lib/angular/angular.js',
         'public/lib/angular-resource/angular-resource.js',
