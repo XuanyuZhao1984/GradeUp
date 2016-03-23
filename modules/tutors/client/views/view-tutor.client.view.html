@@ -1,14 +1,152 @@
 <section>
-  <div class="page-header">
-    <h1 ng-bind="vm.tutor.name"></h1>
+  <h1 class="text-danger"><b>Under Development</b></h1>
+  <br>
+
+
+  <div class="row ">
+    <!-- Google Map -->
+    <div class="col-sm-7" >
+      <!--<div style="position: fixed" id="map"><img src="holder.js/645x645"></div>-->
+      <br>
+      <div   map-lazy-load="https://maps.google.com/maps/api/js"
+             map-lazy-load-params="{{vm.googleMapsUrl}}">
+        <ng-map class="mapArea" center="{{vm.tutor.location[1]}},{{vm.tutor.location[0]}}" zoom="3">
+          <marker position="[{{vm.tutor.location[1]}},{{vm.tutor.location[0]}}]"></marker>
+        </ng-map>
+      </div>
+    </div>
+
+    <!-- Side Panel -->
+    <div class="col-sm-5">
+
+      <!-- Creates Main Panel -->
+      <div class="panel panel-default">
+
+        <!-- Panel Title -->
+
+
+        <!-- Panel Body -->
+        <div class="panel-body">
+
+          <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
+          <form name="vm.form.tutorForm"   novalidate>
+
+            <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
+            <div class="row ">
+              <div class="col-xs-6">
+
+                <div class="form-group" >
+                  <label  >Name</label>
+                  <h4 >{{vm.tutor.name}}</h4>
+
+                </div>
+
+                <div class="form-group" >
+                  <label  >Gender</label>
+                  <h4 >{{vm.tutor.gender}}</h4>
+
+                </div>
+
+
+
+              </div>
+              <!--uploading photo area-->
+              <div class="col-xs-6 " align="center">
+                <img ng-src="{{vm.imageURL}}" alt="{{vm.tutor.name}}" class="img-thumbnail "  >
+
+                <!--<button type="button" class="btn btn-info" style="margin-top: 5px">Upload your photo</button>-->
+              </div>
+            </div>
+
+
+
+            <div class="row ">
+              <div class="col-xs-6">
+                <div class="form-group" >
+                  <label  >Age</label>
+                  <h4 >{{vm.tutor.age}}</h4>
+
+                </div>
+
+              </div>
+              <!--Upload photo button-->
+
+            </div>
+
+
+
+
+
+            <div class="form-group" >
+              <label  >Language</label>
+              <h4 >{{vm.tutor.language}}</h4>
+
+            </div>
+
+
+            <div class="form-group" >
+              <label  >Subject</label>
+              <h4 >{{vm.tutor.subject}}</h4>
+
+            </div>
+
+            <div class="form-group" >
+              <label  >Hourly Rate</label>
+              <h4 >{{vm.tutor.hourly_rate}} AUD</h4>
+
+            </div>
+            <div class="form-group" >
+              <label  >Latitude</label>
+              <h4 >{{vm.tutor.location[1]}}</h4>
+
+            </div>
+            <div class="form-group" >
+              <label  >Longitude</label>
+              <h4 >{{vm.tutor.location[0]}}</h4>
+
+            </div>
+
+            <!--Lat and Longitude read only since they are derived from google map data-->
+
+            <div class="form-group" >
+              <label  >City</label>
+              <h4 >{{vm.tutor.city}}</h4>
+
+            </div>
+            <div class="form-group" >
+              <label  >Address</label>
+              <h4 >{{vm.tutor.address}}</h4>
+
+            </div>
+            <div class="form-group" >
+              <label  >Available Time</label>
+              <h4 >{{vm.tutor.available_days}}</h4>
+
+            </div>
+            <!--multiselect available days-->
+            <div class="form-group" >
+              <label  >Description</label>
+              <h4 >{{vm.tutor.description}}</h4>
+
+            </div>
+
+
+
+
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <img ng-src="vm.tutor.imageURL">
+
+
+
   <div class="pull-right" ng-show="vm.tutor.isCurrentUserOwner">
     <a class="btn btn-primary" ui-sref="tutors.edit({ tutorId: vm.tutor._id })">
-      <i class="glyphicon glyphicon-edit"></i>
+      <i class="glyphicon glyphicon-edit">Update this tutor</i>
     </a>
     <a class="btn btn-primary" ng-click="vm.remove()">
-      <i class="glyphicon glyphicon-trash"></i>
+      <i class="glyphicon glyphicon-trash">Delete this tutor</i>
     </a>
   </div>
   <small>
@@ -20,5 +158,5 @@
       <span ng-if="!vm.tutor.user">Deleted User</span>
     </em>
   </small>
-  <p class="lead" ng-bind="vm.tutor.content"></p>
+
 </section>
