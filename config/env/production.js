@@ -8,7 +8,7 @@ module.exports = {
   },
   port: process.env.PORT || 8443,
   // Binding to 127.0.0.1 is safer in production.
-  //host: process.env.HOST || '0.0.0.0',
+  host: process.env.HOST || '0.0.0.0',
   db: {
     uri: 'mongodb://xuanyu:888170@ds021979.mlab.com:21979/gradeup',
     options: {
